@@ -3,15 +3,15 @@ class TravelController < ApplicationController
   end
 
   def search
-  countries = find_country(params[:country])
+  countries = find_country(params[:country_ip])
 
   unless countries
-    flash[:alert] = 'Country not found'
+    flash[:alert] = 'Country ip not found'
     return render action: index
   end
 
-  @country = countries.first
-  @weather = find_weather(@country['capital'], @country['alpha2Code'])
+  @country = countries
+  # @weather = find_weather(@country['capital'], @country['alpha2Code'])
   end
 
   private
@@ -30,17 +30,17 @@ class TravelController < ApplicationController
     JSON.parse(response.body)
   end
 
-  def find_country(name)
+  def find_country(ip_address)
     request_api(
-      "https://restcountries-v1.p.rapidapi.com/name/#{URI.encode_www_form_component(name)}"
+      "https://ip-geolocation-ipwhois-io.p.rapidapi.com/json/#{URI.encode_www_form_component(ip_address)}"
     )
   end
 
-  def find_weather(city, country_code)
-    query = URI.encode("#{city}, #{country_code}")
-
-    request_api(
-      "https://community-open-weather-map.p.rapidapi.com/forecast?q=#{query}"
-    )
-  end
+  # def find_weather(city, country_code)
+  #   query = URI.encode("#{city}, #{country_code}")
+  #
+  #   request_api(
+  #     "https://community-open-weather-map.p.rapidapi.com/forecast?q=#{query}"
+  #   )
+  # end
 end

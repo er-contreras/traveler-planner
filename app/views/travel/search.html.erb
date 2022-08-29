@@ -4,31 +4,31 @@
       <h4>Country info</h4>
       <dl>
         <dt>Country</dt>
-        <dd><%= @country['name'] %></dd>
+        <dd><%= @country['country'] %></dd>
 
         <dt>Capital</dt>
-        <dd><%= @country['capital'] %></dd>
+        <dd><%= @country['city'] %></dd>
 
         <dt>Currency</dt>
-        <dd><%= @country['currencies'].join(', ') %></dd>
+        <dd><%= @country['currency'] %></dd>
 
         <dt>Timezone(s)</dt>
-        <dd><%= @country['timezones'].join(', ') %></dd>
+        <dd><%= @country['timezone'] %></dd>
       </dl>
     </div>
 
-    <div class="col-lg-6">
-      <h4>Weather info</h4>
+<!--    <div class="col-lg-6">-->
+<!--      <h4>Weather info</h4>-->
 
-      <dl>
-        <% @weather['list'].each do |weather| %>
-          <dt><%= weather['dt_txt'] %></dt>
-          <dd>
-            <strong>Min</strong> <%= to_fahrenheit weather['main']['temp_min'] %>
-            <strong>Max</strong> <%= to_fahrenheit weather['main']['temp_max'] %>
-          </dd>
-        <% end %>
-      </dl>
-    </div>
+<!--      <dl>-->
+        <%# @weather['list'].each do |weather| %>
+<!--          <dt><%#= weather['dt_txt'] %></dt>-->
+<!--          <dd>-->
+<!--            <strong>Min</strong> <%#= to_fahrenheit weather['main']['temp_min'] %>-->
+<!--            <strong>Max</strong> <%#= to_fahrenheit weather['main']['temp_max'] %>-->
+<!--          </dd>-->
+        <%# end %>
+<!--      </dl>-->
+<!--    </div>-->
   </div>
 </div>
